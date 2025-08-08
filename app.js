@@ -8,10 +8,18 @@
 // Import da biblioteca do readline
 const readline = require('readline')
 
-const entradaDeDados = readline.createInterface(){
-    input: stdin,
-    output: stdout
-}
+// Variaveis que contem mensagens de erros
+const MESSAGE_ERROR_EMPTY = 'ERRO: Existem campos que não foram preenchidos.'
+const MESSAGE_ERROR_NOT_NUMBER = 'ERRO: Não é possivel calcular com a entrada de letras.'
+//const MESSAGE_ERROR_OUT_OF_RANGER = 'ERRO: Os valores informados precisam ser entre 0 e 10.'
+
+//const calculoDeJuros = require('./modulo/calculo.js')
+const mensagem = require('./modulo/saida.js')
+
+const entradaDeDados = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
 
 // Entrada de dados do cliente
 entradaDeDados.question('Nome: ', function(nome){
@@ -31,11 +39,17 @@ entradaDeDados.question('Nome: ', function(nome){
 
                     entradaDeDados.question('Tempo de parcelamento (em anos): ', function(tempo){
                         let tempoParcelamento = tempo
+
+                       if(nomeCliente == '' || itemComprado == '' || capitalInicial == '' || percentualJuros == '' || parcelasAnuais == '' || tempoParcelamento == ''){
+                         console.log(MESSAGE_ERROR_EMPTY)
+                        }else if(isNaN(nomeCliente) == false || isNaN(capitalInicial) || isNaN(percentualJuros) || isNaN(parcelasAnuais) || isNaN(tempoParcelamento)){
+                            console.log(MESSAGE_ERROR_NOT_NUMBER)
+                        }else{
+                            console.log(mensagem.saidaDeDados())
+                        }
                     })
                 })
             })
         })
     })
 })
-
-

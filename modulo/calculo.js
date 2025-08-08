@@ -12,14 +12,13 @@ function calcularJuros(valor, juros, parcelas, tempo){
     let parcelasAnuais = parcelas
     let tempoParcelamento = tempo
 
-    let montanteFinal = Number(capitalInicial) * (1 + Number(percentualJuros) / Number(parcelasAnuais)) ^ (Number(parcelasAnuais) * Number(tempoParcelamento))
+    let montanteFinal = Number(capitalInicial) * Math.pow((1 + Number((percentualJuros / 100)) / Number(parcelasAnuais)) , Number(parcelasAnuais) * Number(tempoParcelamento))
 
     return Number(montanteFinal)
 }
 
-console.log(calcularJuros(1000, 10, 12, 1))
+//console.log(calcularJuros(1000, 10, 12, 1))
 
 module.exports = {
     calcularJuros,
-
 }
