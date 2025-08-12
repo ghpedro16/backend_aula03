@@ -4,21 +4,18 @@
  * Data: 08/08/2025
  * Versão: 1.0
 *************************************************************************************************************************************************************************/
-//const app = require('../app.js')
-//const calculo = require('./calculo.js')
 
-function saidaDeDados(nome, produto, valor, parcelas){
-    let valorFinal = calculo.calcularJuros(valor, calcularJuros, parcelas, tempo)
+function saidaDeDados(nome, produto, valor, parcelas, valorFinal){
 
-    let mensagemFinal
+    let mensagemFinal = `
+********************** [Vida Moda] **********************
+Muito obrigado por realizar a sua compra conosco Sr(a) ${nome}.
+A compra do produto ${produto}, tem um valor de: R$${valor}.
+A sua compra será parcelada em ${parcelas} vezes e o Sr(a) pagará: R$${valorFinal}
 
-    console.log('******************* [Nome da Empresa] *******************')
-    console.log(`Muito obrigado por realizar a sua compra conosco Sr(a) ${nome}.`)
-    console.log(`A compra do produto ${produto}, tem um valor de: ${valor}}.`)
-    console.log(`A sua compra será parcelada em ${parcelas} vezes e o Sr(a) pagará: ${valorFinal}`)
-    console.log('')
-    console.log('Muito obrigado por escolher a [Nome da Empresa].')
-    console.log('*********************************************************')
+Muito obrigado por escolher a [Viva Moda].    
+*********************************************************
+`
 
     if(mensagemFinal == undefined){
         return false
@@ -29,8 +26,5 @@ function saidaDeDados(nome, produto, valor, parcelas){
 }
 
 module.exports = {
-    saidaDeDados,
-    
+    saidaDeDados
 }
-
-//console.log(saidaDeDados('Pedro', 'XBox', '1200', '12'))

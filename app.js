@@ -13,7 +13,7 @@ const MESSAGE_ERROR_EMPTY = 'ERRO: Existem campos que não foram preenchidos.'
 const MESSAGE_ERROR_NOT_NUMBER = 'ERRO: Não é possivel calcular com a entrada de letras.'
 //const MESSAGE_ERROR_OUT_OF_RANGER = 'ERRO: Os valores informados precisam ser entre 0 e 10.'
 
-//const calculoDeJuros = require('./modulo/calculo.js')
+const calculoDeJuros = require('./modulo/calculo.js')
 const mensagem = require('./modulo/saida.js')
 
 const entradaDeDados = readline.createInterface({
@@ -45,7 +45,8 @@ entradaDeDados.question('Nome: ', function(nome){
                         }else if(isNaN(nomeCliente) == false || isNaN(capitalInicial) || isNaN(percentualJuros) || isNaN(parcelasAnuais) || isNaN(tempoParcelamento)){
                             console.log(MESSAGE_ERROR_NOT_NUMBER)
                         }else{
-                            console.log(mensagem.saidaDeDados())
+                            let valorFinal = calculoDeJuros.calcularJuros(valor, juros, parcelas, tempo)
+                            console.log(mensagem.saidaDeDados(nome, produto, valor, parcelas, valorFinal))
                         }
                     })
                 })
